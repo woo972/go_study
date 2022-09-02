@@ -19,6 +19,7 @@ func NewServer() *Server {
 			staticHandler,
 			parseFormHandler,
 			parseJsonBodyHandler,
+			tokenizeFilter,
 		}}
 }
 

@@ -128,3 +128,14 @@ func staticHandler(next HandlerFunc) HandlerFunc {
 		http.ServeContent(c.ResponseWriter, c.Request, file, fileInfo.ModTime(), f)
 	}
 }
+
+func tokenizeFilter(next HandlerFunc) HandlerFunc {
+	return func(c *Context) {
+		filters := strings.Split(c.Params["filter"].(string), "|")
+		for _, v := range filters {
+			fmt.Printf("input filter: %n", v)
+		}
+		next(c)
+	}
+
+}
